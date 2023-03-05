@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  font-family: "Quicksand", sans-serif;
+  color: rgb(255, 151, 112);
+  background-color: rgba(255, 151, 112, 0.2);
+}
+
+.divTable {
+  border: 5px solid #89fc00;
+  margin: 0px;
+  padding: 0px;
+}
+.tableStyle {
+  padding: 1%;
+  background-color: white;
+  margin: 3% auto;
+  border: 1px solid rgb(255, 151, 112);
+  -webkit-box-shadow: -4px 37px 156px -9px rgba(139, 252, 0, 1);
+  -moz-box-shadow: -4px 37px 156px -9px rgba(139, 252, 0, 1);
+  box-shadow: -4px 37px 156px -9px rgba(139, 252, 0, 1);
+}
+
+.tableBody td {
+  text-align: left;
+  border: 1px solid #89fc00;
+}
+.tableHead td {
+  color: #57490ad0;
+  font-weight: bolder;
+}
+ /* to control the columns and rows size*/
+table {
+  width: 300px;
+}
+tr {
+  width: 100%;
+}
+td {
+  width: 50%;
+}
