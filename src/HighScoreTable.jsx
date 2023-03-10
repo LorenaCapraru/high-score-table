@@ -16,12 +16,14 @@ export default function HighScoreTable(props) {
         <td> {element.name.toUpperCase()}</td>
       </thead>
       <tbody className="tableBody">
-        {element.scores.map((e) => (
-          <tr>
-            <td>{e.n.charAt(0).toUpperCase() + e.n.slice(1)}</td>
-            <td>{e.s}</td>
-          </tr>
-        ))}
+        {element.scores
+          .sort((a, b) => b.s - a.s)
+          .map((e) => (
+            <tr>
+              <td>{e.n.charAt(0).toUpperCase() + e.n.slice(1)}</td>
+              <td>{e.s}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   ));
