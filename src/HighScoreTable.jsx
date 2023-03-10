@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function HighScoreTable(props) {
   const sortedCountries = props.data.sort((a, b) => {
@@ -9,24 +9,53 @@ export default function HighScoreTable(props) {
     else return 0;
   });
 
-  const country = sortedCountries.map((element) => (
-    <table className="divTable">
-      <thead className="tableHead">
-        <td>High Scores:</td>
-        <td> {element.name.toUpperCase()}</td>
-      </thead>
-      <tbody className="tableBody">
-        {element.scores
-          .sort((a, b) => b.s - a.s)
-          .map((e) => (
+  const [ascending, setAscending] = useState(props.data);
+  function handleDescendingClick() {
+    let newData = [...sortedCountries];
+    newData.map((el) => el.scores.sort((a, b) => b.s - a.s));
+    return setAscending(newData);
+  }
+
+  const [descending, setDescending] = useState(props.data);
+  function handleAscendingClick() {
+    let newData = [...sortedCountries];
+    newData.map((el) => el.scores.sort((a, b) => a.s - b.s));
+    return setDescending(newData);
+  }
+
+  function country(data) {
+    return data.map((element) => (
+      <table className="divTable">
+        <thead className="tableHead">
+          <td>High Scores:</td>
+          <td> {element.name.toUpperCase()}</td>
+        </thead>
+        <tbody className="tableBody">
+          {element.scores.map((e) => (
             <tr>
               <td>{e.n.charAt(0).toUpperCase() + e.n.slice(1)}</td>
               <td>{e.s}</td>
             </tr>
           ))}
-      </tbody>
-    </table>
-  ));
+        </tbody>
+      </table>
+    ));
+  }
 
-  return <table className="tableStyle">{country}</table>;
+  return (
+    <div className="container">
+      <div className="buttonsContainer">
+        <button onClick={handleDescendingClick}>Descending Order</button>
+        <button onClick={handleAscendingClick}>Ascending Order</button>
+      </div>
+      <table className="tableStyle">
+        {ascending
+          ? country(ascending)
+          : descending
+          ? country(descending)
+          : country(sortedCountries)}
+      </table>
+      ;
+    </div>
+  );
 }
