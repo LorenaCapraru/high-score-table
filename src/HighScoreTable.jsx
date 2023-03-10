@@ -1,7 +1,15 @@
 import React from "react";
 
 export default function HighScoreTable(props) {
-  const country = props.data.map((element) => (
+  const sortedCountries = props.data.sort((a, b) => {
+    let sortedA = a.name;
+    let sortedB = b.name;
+    if (sortedA > sortedB) return 1;
+    else if (sortedB > sortedA) return -1;
+    else return 0;
+  });
+
+  const country = sortedCountries.map((element) => (
     <table className="divTable">
       <thead className="tableHead">
         <td>High Scores:</td>
