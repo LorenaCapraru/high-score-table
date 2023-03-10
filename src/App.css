@@ -105,3 +105,7 @@ button {
   margin-top: 1%;
   align-items: center;
 }
+.tables {
+  display: flex;
+  flex-direction: row;
+}
