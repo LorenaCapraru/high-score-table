@@ -74,7 +74,7 @@ export default function HighScoreTable(props) {
             ? country([...descending])
             : country([...sortedCountries])}
         </table>
-        <table className="tableStyle">{worldWideScores(sortedCountries)}</table>
+        <table className="tableStyle">{worldWideScores(props.data)}</table>
       </div>
     </div>
   );
