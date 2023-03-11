@@ -23,6 +23,13 @@ export default function HighScoreTable(props) {
     return setDescending(newData);
   }
 
+  //sort the world wide table
+  let newArray = [];
+  props.data.map((element) => element.scores.map((el) => newArray.push(el)));
+  newArray.sort((a, b) => b.s - a.s);
+  console.log(newArray);
+  //till this point
+
   function country(data) {
     return data.map((element) => (
       <table className="divTable">
@@ -45,14 +52,12 @@ export default function HighScoreTable(props) {
   function worldWideScores(data) {
     return (
       <table className="divTable">
-        {data.map((element) => (
+        {data.map((e) => (
           <tbody className="tableBody">
-            {element.scores.map((e) => (
-              <tr>
-                <td>{e.n.charAt(0).toUpperCase() + e.n.slice(1)}</td>
-                <td>{e.s}</td>
-              </tr>
-            ))}
+            <tr>
+              <td>{e.n.charAt(0).toUpperCase() + e.n.slice(1)}</td>
+              <td>{e.s}</td>
+            </tr>
           </tbody>
         ))}
       </table>
@@ -74,7 +79,7 @@ export default function HighScoreTable(props) {
             ? country([...descending])
             : country([...sortedCountries])}
         </table>
-        <table className="tableStyle">{worldWideScores(props.data)}</table>
+        <table className="tableStyle">{worldWideScores(newArray)}</table>
       </div>
     </div>
   );
